@@ -1107,4 +1107,321 @@ a {
   }
 }
 
+/* =====================================================
+   COLLAPSIBLE SIDEBAR
+   Keeps the original admin visual design.
+   ===================================================== */
+
+
+/* New collapse button */
+
+.admin-collapse-button {
+  position: absolute;
+
+  top: 28px;
+  right: 18px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+          1px solid
+          rgba(255, 255, 255, 0.16);
+
+  border-radius: 9px;
+
+  background:
+          rgba(255, 255, 255, 0.07);
+
+  color: white;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition:
+          background 0.15s ease,
+          border-color 0.15s ease,
+          transform 0.15s ease;
+}
+
+
+.admin-collapse-button:hover {
+  background:
+          rgba(255, 255, 255, 0.12);
+
+  border-color:
+          rgba(255, 255, 255, 0.3);
+
+  transform:
+          translateY(-1px);
+}
+
+
+/* Collapsed brand is hidden normally */
+
+.admin-brand-collapsed {
+  display: none;
+}
+
+
+/* Short navigation labels are hidden normally */
+
+.admin-nav-short {
+  display: none;
+}
+
+
+/* Smooth desktop resizing */
+
+@media (min-width: 851px) {
+
+  .admin-shell {
+    transition:
+            grid-template-columns
+            0.2s ease;
+  }
+
+
+  /*
+   * Sidebar changes from the
+   * original 260px width to 84px.
+   */
+
+  .admin-shell-collapsed {
+    grid-template-columns:
+      84px
+      minmax(0, 1fr);
+  }
+
+
+  .admin-sidebar {
+    overflow: hidden;
+
+    transition:
+            padding 0.2s ease;
+  }
+
+
+  /*
+   * Reduce padding only when
+   * collapsed.
+   */
+
+  .admin-shell-collapsed
+  .admin-sidebar {
+    padding:
+            34px
+            12px
+            24px;
+  }
+
+
+  /*
+   * Hide original brand.
+   */
+
+  .admin-shell-collapsed
+  .admin-brand-expanded {
+    display: none;
+  }
+
+
+  /*
+   * Small MCC brand in collapsed
+   * mode.
+   */
+
+  .admin-shell-collapsed
+  .admin-brand-collapsed {
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #917cf5;
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.7px;
+  }
+
+
+  /*
+   * Center collapse arrow when the
+   * sidebar is narrow.
+   */
+
+  .admin-shell-collapsed
+  .admin-collapse-button {
+    position: static;
+
+    margin:
+            12px
+            auto
+            0;
+  }
+
+
+  /*
+   * Keep the same navigation layout
+   * but reduce the vertical gap a
+   * little in collapsed mode.
+   */
+
+  .admin-shell-collapsed
+  .admin-nav {
+    margin-top: 28px;
+
+    gap: 22px;
+
+    padding-right: 0;
+  }
+
+
+  /*
+   * Hide section titles.
+   */
+
+  .admin-shell-collapsed
+  .admin-nav-label {
+    display: none;
+  }
+
+
+  /*
+   * Hide full navigation names.
+   */
+
+  .admin-shell-collapsed
+  .admin-nav-full {
+    display: none;
+  }
+
+
+  /*
+   * Show compact labels instead.
+   */
+
+  .admin-shell-collapsed
+  .admin-nav-short {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    color: #f4f2f7;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+
+  /*
+   * Center the existing dark
+   * sidebar links.
+   */
+
+  .admin-shell-collapsed
+  .admin-nav-section a {
+    min-height: 38px;
+
+    padding:
+            9px
+            5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+  }
+
+
+  /*
+   * Don't shift sideways on hover
+   * while collapsed.
+   */
+
+  .admin-shell-collapsed
+  .admin-nav-section a:hover {
+    transform: none;
+  }
+
+
+  /*
+   * Hide user name because there
+   * isn't enough horizontal space.
+   */
+
+  .admin-shell-collapsed
+  .admin-user {
+    display: none;
+  }
+
+
+  /*
+   * Keep Sign Out functionality,
+   * but turn the existing button
+   * into a compact icon button.
+   */
+
+  .admin-shell-collapsed
+  .admin-signout {
+    width: 42px;
+    height: 42px;
+
+    margin:
+            0
+            auto;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0;
+  }
+
+
+  .admin-shell-collapsed
+  .admin-signout::before {
+    content: "↪";
+
+    font-size: 17px;
+  }
+
+
+  .admin-shell-collapsed
+  .admin-sidebar-bottom {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+/*
+ * Preserve the existing mobile
+ * sidebar exactly as it was.
+ */
+
+@media (max-width: 850px) {
+
+  .admin-collapse-button {
+    display: none;
+  }
+
+}
+
+
+
 
